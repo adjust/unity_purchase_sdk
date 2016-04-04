@@ -25,8 +25,8 @@ namespace com.adjust.sdk.purchase
         {
             if (AdjustPurchase.instance != null)
             {
-                  return;
-              }
+                return;
+            }
               
             DontDestroyOnLoad (transform.gameObject);
 

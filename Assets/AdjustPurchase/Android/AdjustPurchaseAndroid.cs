@@ -88,7 +88,6 @@ namespace com.adjust.sdk.purchase
 
         public void VerifyPurchaseiOS (string receipt, string transactionId, string sceneName)
         {
-            
         }
 
         public void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback)

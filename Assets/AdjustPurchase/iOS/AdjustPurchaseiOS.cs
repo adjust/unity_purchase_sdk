@@ -46,7 +46,6 @@ namespace com.adjust.sdk.purchase
 
         public void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback)
         {
-
         }
         #endregion
     }
