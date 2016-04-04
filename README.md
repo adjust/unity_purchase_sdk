@@ -79,7 +79,7 @@ using com.adjust.sdk.purchase;
 AdjustPurchase.VerifyPurchaseiOS ("{Receipt}", "{TransactionID", VerificationInfoDelegate);
 
 // Purchase verification request on Android.
-AdjustPurchase.VerifyPurchaseiOS ("{ItemSKU}", "{ItemToken}", "{DeveloperPayload}", VerificationInfoDelegate);
+AdjustPurchase.VerifyPurchaseAndroid ("{ItemSKU}", "{ItemToken}", "{DeveloperPayload}", VerificationInfoDelegate);
 
 // ...
 
