@@ -126,8 +126,6 @@ namespace com.adjust.sdk.purchase
                 return;
             }
 
-            Debug.Log ("--> Verification status string = " + stringVerificationInfo);
-
             ADJPVerificationInfo verificationInfo = new ADJPVerificationInfo(stringVerificationInfo);
             AdjustPurchase.verificationInfoCallback(verificationInfo);
         }
