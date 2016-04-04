@@ -19,8 +19,7 @@ Unity package in a folder of your choice.
 
 ### 2. Add it to your project
 
-Open your project in the Unity Editor and navigate to `Assets → Import Package → Custom Package` 
-and select the downloaded Unity package file.
+Open your project in the Unity Editor and navigate to `Assets → Import Package → Custom Package`. Select the downloaded Unity package file.
 
 ![][import_package]
 
@@ -32,7 +31,7 @@ Edit the parameters of the `AdjustPurchase` script in the Inspector menu of the 
 
 ![][adjust_purchase_editor]
 
-Replace `{YourAppToken}` with your App Token. You can find in your [dashboard].
+Replace `{YourAppToken}` with your App Token. You can find it in your [dashboard].
 
 You can increase or decrease the amount of logs you see by changing the value
 of `Log Level` to one of the following:
@@ -44,8 +43,8 @@ of `Log Level` to one of the following:
 - `Error` - disable warnings as well
 - `Assert` - disable errors as well
 
-Depending on whether or not you build your app for testing or for production
-you must change `Environment` with one of these values:
+Depending on whether or not you build your app for testing or for production,
+you must define `Environment` with one of these values:
 
 ```
 'Sandbox'
@@ -59,17 +58,16 @@ start testing it again.
 
 We use this environment to distinguish between real traffic and artificial
 traffic from test devices. It is very important that you keep this value
-meaningful at all times, because we are using it to choose should your purchase
-be verified on Apple/Google sandbox or production servers!
+meaningful at all times: we are using it to determine whether your purchases should be verified on Apple/Google sandbox or production servers!
 
 ### 4. Verify your purchases
 
 #### Make the verification request
 
 In order to verify in-app purchases, you need to call the `VerifyPurchaseiOS`
-method on `AdjustPurchase` instance for purchase verification on iOS or 
+method on the `AdjustPurchase` instance for purchase verification on iOS, or the 
 `VerifyPurchaseAndroid` method for purchase verification on Android. Please 
-make sure to call this method after transaction has been finished and your 
+make sure to call this method after the transaction has been finished and your 
 item purchased.
 
 ```csharp
@@ -96,8 +94,8 @@ private void VerificationInfoDelegate (ADJPVerificationInfo verificationInfo)
 
 #### Process verification response
 
-As described in the code above, you need to pass a method which is going to process
-verification response to `VerifyPurchaseiOS` or `VerifyPurchaseAndroid` method.
+As described in the code above, you need to pass a method which is going to process the
+verification response to the `VerifyPurchaseiOS` or `VerifyPurchaseAndroid` methods.
 
 In the example above, we designed the `VerificationInfoDelegate` method to be called 
 once the response arrives. The response to purchase verification is represented with 
@@ -144,7 +142,7 @@ an optional transaction ID created in an event in order to avoid tracking duplic
 The last ten transaction IDs are remembered and revenue events with duplicate transaction 
 IDs are skipped.
 
-**At the moment, transaction duplication protection mechanism is working only for iOS platform.**
+**At the moment, the transaction duplication protection mechanism is working only for the iOS platform.**
 
 Using the examples from above, you can do this as follows:
 
