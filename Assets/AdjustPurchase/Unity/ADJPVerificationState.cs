@@ -1,12 +1,12 @@
 ﻿namespace com.adjust.sdk.purchase
 {
-	public enum ADJPVerificationState
-	{
-		ADJPVerificationStatePassed,
-    	ADJPVerificationStateFailed,
-    	ADJPVerificationStateUnknown,
-    	ADJPVerificationStateNotVerified
-	}
+    public enum ADJPVerificationState
+    {
+        ADJPVerificationStatePassed,
+        ADJPVerificationStateFailed,
+        ADJPVerificationStateUnknown,
+        ADJPVerificationStateNotVerified
+    }
 
     public static class ADJPVerificationStateExtension
     {

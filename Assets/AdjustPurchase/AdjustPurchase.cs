@@ -5,132 +5,132 @@ using UnityEngine;
 
 namespace com.adjust.sdk.purchase
 {
-	public class AdjustPurchase : MonoBehaviour
-	{
-		#region AdjustPurchase fields
-		private const string errorMessage = "adjust purchase: SDK not started. Start it manually using the 'start' method.";
+    public class AdjustPurchase : MonoBehaviour
+    {
+        #region AdjustPurchase fields
+        private const string errorMessage = "adjust purchase: SDK not started. Start it manually using the 'start' method.";
 
-		private static IAdjustPurchase instance = null;
-		private static Action<ADJPVerificationInfo> verificationInfoCallback;
+        private static IAdjustPurchase instance = null;
+        private static Action<ADJPVerificationInfo> verificationInfoCallback;
 
-		public bool startManually = true;
-		public string appToken = "{Your App Token}";
+        public bool startManually = true;
+        public string appToken = "{Your App Token}";
 
-		public ADJPLogLevel logLevel = ADJPLogLevel.Info;
-		public ADJPEnvironment environment = ADJPEnvironment.Sandbox;
-		#endregion
+        public ADJPLogLevel logLevel = ADJPLogLevel.Info;
+        public ADJPEnvironment environment = ADJPEnvironment.Sandbox;
+        #endregion
 
-		#region Unity lifecycle methods
-		void Awake ()
-		{
-			if (AdjustPurchase.instance != null)
-			{
-  				return;
-  			}
-  			
-			DontDestroyOnLoad (transform.gameObject);
+        #region Unity lifecycle methods
+        void Awake ()
+        {
+            if (AdjustPurchase.instance != null)
+            {
+                  return;
+              }
+              
+            DontDestroyOnLoad (transform.gameObject);
 
-			if (!this.startManually)
-			{
-				ADJPConfig config = new ADJPConfig (this.appToken, this.environment);
-				config.SetLogLevel (this.logLevel);
+            if (!this.startManually)
+            {
+                ADJPConfig config = new ADJPConfig (this.appToken, this.environment);
+                config.SetLogLevel (this.logLevel);
 
-				AdjustPurchase.Init (config);
-			}
-		}
-		#endregion
+                AdjustPurchase.Init (config);
+            }
+        }
+        #endregion
 
-		#region AdjustPurchase methods
-		public static void Init (ADJPConfig config)
-		{
-			if (AdjustPurchase.instance != null)
-			{
-				Debug.Log ("adjust purchase: Error, purchase SDK already started.");
-				return;
-			}
+        #region AdjustPurchase methods
+        public static void Init (ADJPConfig config)
+        {
+            if (AdjustPurchase.instance != null)
+            {
+                Debug.Log ("adjust purchase: Error, purchase SDK already started.");
+                return;
+            }
 
-			if (config == null)
-			{
-				Debug.Log ("adjust purchase: Missing config to start.");
-				return;
-			}
+            if (config == null)
+            {
+                Debug.Log ("adjust purchase: Missing config to start.");
+                return;
+            }
 
-			#if UNITY_EDITOR
-				AdjustPurchase.instance = null;
-			#elif UNITY_IOS
-				AdjustPurchase.instance = new AdjustPurchaseiOS ();
-			#elif UNITY_ANDROID
-				AdjustPurchase.instance = new AdjustPurchaseAndroid ();
-			#else
-				AdjustPurchase.instance = null;
-			#endif
+            #if UNITY_EDITOR
+                AdjustPurchase.instance = null;
+            #elif UNITY_IOS
+                AdjustPurchase.instance = new AdjustPurchaseiOS ();
+            #elif UNITY_ANDROID
+                AdjustPurchase.instance = new AdjustPurchaseAndroid ();
+            #else
+                AdjustPurchase.instance = null;
+            #endif
 
-			if (AdjustPurchase.instance == null)
-			{
-				Debug.Log ("adjust purchase: Purchase SDK can only be used in Android and iOS apps.");
-				return;
-			}
+            if (AdjustPurchase.instance == null)
+            {
+                Debug.Log ("adjust purchase: Purchase SDK can only be used in Android and iOS apps.");
+                return;
+            }
 
-			AdjustPurchase.instance.Init (config);
-		}
+            AdjustPurchase.instance.Init (config);
+        }
 
-		public static void VerifyPurchaseiOS (string receipt, string transactionId, Action<ADJPVerificationInfo> verificationInfoCallback, string sceneName = "AdjustPurchase")
-		{
-			if (AdjustPurchase.instance == null)
-			{
-				Debug.Log (AdjustPurchase.errorMessage);
-				return;
-			}
+        public static void VerifyPurchaseiOS (string receipt, string transactionId, Action<ADJPVerificationInfo> verificationInfoCallback, string sceneName = "AdjustPurchase")
+        {
+            if (AdjustPurchase.instance == null)
+            {
+                Debug.Log (AdjustPurchase.errorMessage);
+                return;
+            }
 
-			if (receipt == null || transactionId == null || verificationInfoCallback == null)
-			{
-				Debug.Log ("adjust purchase: Invalid purchase parameters.");
-				return;
-			}
+            if (receipt == null || transactionId == null || verificationInfoCallback == null)
+            {
+                Debug.Log ("adjust purchase: Invalid purchase parameters.");
+                return;
+            }
 
-			AdjustPurchase.verificationInfoCallback = verificationInfoCallback;
-			AdjustPurchase.instance.VerifyPurchaseiOS (receipt, transactionId, sceneName);
-		}
+            AdjustPurchase.verificationInfoCallback = verificationInfoCallback;
+            AdjustPurchase.instance.VerifyPurchaseiOS (receipt, transactionId, sceneName);
+        }
 
-		public static void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback, string sceneName = "AdjustPurchase")
-		{
-			if (AdjustPurchase.instance == null)
-			{
-				Debug.Log (AdjustPurchase.errorMessage);
-				return;
-			}
+        public static void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback, string sceneName = "AdjustPurchase")
+        {
+            if (AdjustPurchase.instance == null)
+            {
+                Debug.Log (AdjustPurchase.errorMessage);
+                return;
+            }
 
-			if (itemSku == null || itemToken == null || developerPayload == null || verificationInfoCallback == null)
-			{
-				Debug.Log ("adjust purchase: Invalid purchase parameters.");
-				return;
-			}
+            if (itemSku == null || itemToken == null || developerPayload == null || verificationInfoCallback == null)
+            {
+                Debug.Log ("adjust purchase: Invalid purchase parameters.");
+                return;
+            }
 
-			AdjustPurchase.verificationInfoCallback = verificationInfoCallback;
-			AdjustPurchase.instance.VerifyPurchaseAndroid (itemSku, itemToken, developerPayload, verificationInfoCallback);
-		}
-		#endregion
+            AdjustPurchase.verificationInfoCallback = verificationInfoCallback;
+            AdjustPurchase.instance.VerifyPurchaseAndroid (itemSku, itemToken, developerPayload, verificationInfoCallback);
+        }
+        #endregion
 
-		#region Verification info callback
-		public void GetNativeVerificationInfo (string stringVerificationInfo)
-		{
-			if (AdjustPurchase.instance == null)
-			{
-				Debug.Log (AdjustPurchase.errorMessage);
-				return;
-			}
+        #region Verification info callback
+        public void GetNativeVerificationInfo (string stringVerificationInfo)
+        {
+            if (AdjustPurchase.instance == null)
+            {
+                Debug.Log (AdjustPurchase.errorMessage);
+                return;
+            }
 
-			if (AdjustPurchase.verificationInfoCallback == null)
-			{
-				Debug.Log ("adjust purchase: Attribution changed delegate was not set.");
-				return;
-			}
+            if (AdjustPurchase.verificationInfoCallback == null)
+            {
+                Debug.Log ("adjust purchase: Attribution changed delegate was not set.");
+                return;
+            }
 
-			Debug.Log ("--> Verification status string = " + stringVerificationInfo);
+            Debug.Log ("--> Verification status string = " + stringVerificationInfo);
 
-			ADJPVerificationInfo verificationInfo = new ADJPVerificationInfo(stringVerificationInfo);
-			AdjustPurchase.verificationInfoCallback(verificationInfo);
-		}
-		#endregion
-	}
+            ADJPVerificationInfo verificationInfo = new ADJPVerificationInfo(stringVerificationInfo);
+            AdjustPurchase.verificationInfoCallback(verificationInfo);
+        }
+        #endregion
+    }
 }

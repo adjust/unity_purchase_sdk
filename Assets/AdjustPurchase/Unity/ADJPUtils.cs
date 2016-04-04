@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace com.adjust.sdk.purchase
 {
-	public class ADJPUtils
-	{
+    public class ADJPUtils
+    {
         #region Constants
         public static string KeyMessage = "message";
-		public static string KeyStatusCode = "statusCode";
+        public static string KeyStatusCode = "statusCode";
         public static string KeyVerificationState = "verificationState";
         #endregion
 
@@ -78,5 +78,5 @@ namespace com.adjust.sdk.purchase
             }
         }
         #endregion
-	}
+    }
 }
