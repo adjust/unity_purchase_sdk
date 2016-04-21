@@ -198,31 +198,16 @@ private void VerificationInfoDelegate (ADJPVerificationInfo verificationInfo)
     else if (verificationInfo.VerificationState == ADJPVerificationState.ADJPVerificationStateFailed)
     {
         AdjustEvent adjustEvent = new AdjustEvent ("{YourEventFailedToken}");
-        adjustEvent.setRevenue (0.01, "EUR");
-
-        // iOS feature only!
-        adjustEvent.setTransactionId("{TransactionId}");
-
         Adjust.trackEvent (adjustEvent);
     }
     else if (verificationInfo.VerificationState == ADJPVerificationState.ADJPVerificationStateUnknown)
     {
         AdjustEvent adjustEvent = new AdjustEvent ("{YourEventUnknownToken}");
-        adjustEvent.setRevenue (0.01, "EUR");
-
-        // iOS feature only!
-        adjustEvent.setTransactionId("{TransactionId}");
-
         Adjust.trackEvent (adjustEvent);
     }
     else
     {
         AdjustEvent adjustEvent = new AdjustEvent ("{YourEventNotVerifiedToken}");
-        adjustEvent.setRevenue (0.01, "EUR");
-
-        // iOS feature only!
-        adjustEvent.setTransactionId("{TransactionId}");
-
         Adjust.trackEvent (adjustEvent);
     }
 }
