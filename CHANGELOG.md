@@ -1,3 +1,9 @@
+### Version 0.1.1 (18th May 2016)
+#### Changed
+- Updated native iOS purchase SDK version is **0.2.1**.
+
+---
+
 ### Version 0.1.0 (5th April 2016)
 #### Added
 - Initial release of the adjust purchase SDK for Unity3d.
