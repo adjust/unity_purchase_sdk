@@ -49,36 +49,12 @@ extern "C"
         adjustPurchaseUnityInstance = [[AdjustPurchaseUnity alloc] init];
 
         [AdjustPurchase init:config];
-
-        /*
-        ADJPConfig *adjustConfig = [ADJPConfig configWithAppToken:stringAppToken
-                                                      environment:stringEnvironment];
-
-        // Optional fields.
-        if (logLevel != -1) {
-            [adjustConfig setLogLevel:(ADJLogLevel)logLevel];
-        }
-
-        if (eventBuffering != -1) {
-            [adjustConfig setEventBufferingEnabled:(BOOL)eventBuffering];
-        }
-
-        if (sceneName != NULL && [stringSceneName length] > 0) {
-            adjustSceneName = strdup(sceneName);
-            adjustUnityInstance = [[AdjustUnity alloc] init];
-            [adjustConfig setDelegate:(id)adjustUnityInstance];
-        }
-
-        NSLog(@"%@, %@, %@, %d, %d, %@", stringAppToken, stringEnvironment, stringSdkPrefix, logLevel, eventBuffering, stringSceneName);
-
-        // Launch adjust instance.
-        [Adjust appDidLaunch:adjustConfig];
-        */
     }
 
-    void _AdjustPurchaseVerifyPurchase(const char* receipt, const char* transactionId, const char* sceneName) {
+    void _AdjustPurchaseVerifyPurchase(const char* receipt, const char* transactionId, const char* productId, const char* sceneName) {
         NSString *stringReceipt = nil;
         NSString *stringTransactionId = nil;
+        NSString *stringProducId = nil;
         NSString *stringSceneName = [NSString stringWithUTF8String:sceneName];
 
         if (sceneName != NULL && [stringSceneName length] > 0) {
@@ -93,12 +69,15 @@ extern "C"
             stringTransactionId = [NSString stringWithUTF8String:transactionId];
         }
 
+        if (productId != NULL) {
+            stringProducId = [NSString stringWithUTF8String:productId];
+        }
+
         [AdjustPurchase verifyPurchase:[stringReceipt dataUsingEncoding:NSUTF8StringEncoding]
                       forTransactionId:stringTransactionId
+                             productId:stringProducId
                      withResponseBlock:^(ADJPVerificationInfo *info) {
                          [adjustPurchaseUnityInstance adjustVerificationUpdate:info];
                      }];
-
-        // [stringReceipt dataUsingEncoding:NSUTF8StringEncoding]
     }
 }

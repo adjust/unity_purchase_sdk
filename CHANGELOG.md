@@ -1,3 +1,14 @@
+### Version 1.0.0 (5th August 2016)
+#### Added
+- Added product ID to the iOS verification request.
+
+#### Changed
+- Updated docs.
+- Updated native iOS purchase SDK version is **1.0.0**.
+- Updated native Android purchase SDK version is **1.1.2**.
+
+---
+
 ### Version 0.1.1 (18th May 2016)
 #### Changed
 - Updated native iOS purchase SDK version is **0.2.1**.

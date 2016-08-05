@@ -10,7 +10,7 @@ namespace com.adjust.sdk.purchase
     public class AdjustPurchaseAndroid : IAdjustPurchase
     {
         #region Fields
-        private const string sdkPrefix = "unity0.1.1";
+        private const string sdkPrefix = "unity1.0.0";
 
         private AndroidJavaClass ajcAdjustPurchase;
 
@@ -85,7 +85,7 @@ namespace com.adjust.sdk.purchase
             ajcAdjustPurchase.CallStatic ("init", ajoConfig);
         }
 
-        public void VerifyPurchaseiOS (string receipt, string transactionId, string sceneName)
+        public void VerifyPurchaseiOS (string receipt, string transactionId, string productId, string sceneName)
         {
         }
 

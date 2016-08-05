@@ -26,19 +26,6 @@ namespace com.adjust.sdk.purchase
         {
             this.logLevel = logLevel;
         }
-
-        /*
-        public void setAttributionChangedDelegate (Action<AdjustAttribution> attributionChangedDelegate, string sceneName = "Adjust")
-        {
-            this.attributionChangedDelegate = attributionChangedDelegate;
-            this.sceneName = sceneName;
-        }
-
-        public Action<AdjustAttribution> getAttributionChangedDelegate ()
-        {
-            return this.attributionChangedDelegate;
-        }
-        */
         #endregion
     }
 }
