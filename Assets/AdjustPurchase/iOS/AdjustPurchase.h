@@ -32,10 +32,12 @@
  *  @param  transaction     SKPaymentTransaction object obtained after transaction
  *                          state became SKPaymentTransactionStatePurchased and
  *                          after transaction has been finished.
+ *  @param  productId       Product identifier.
  *  @param  responseBlock   Block which will get executed once verification info is available.
  */
 + (void)verifyPurchase:(NSData *)receipt
         forTransaction:(id)transaction
+             productId:(NSString *)productId
      withResponseBlock:(ADJPVerificationAnswerBlock)responseBlock;
 
 /**
@@ -45,10 +47,12 @@
  *  @param  transactionId   SKPaymentTransaction identifier obtained after transaction
  *                          state became SKPaymentTransactionStatePurchased and
  *                          after transaction has been finished.
+ *  @param  productId       Product identifier.
  *  @param  responseBlock   Block which will get executed once verification info is available.
  */
 + (void)verifyPurchase:(NSData *)receipt
       forTransactionId:(NSString *)transactionId
+             productId:(NSString *)productId
      withResponseBlock:(ADJPVerificationAnswerBlock)responseBlock;
 
 @end
