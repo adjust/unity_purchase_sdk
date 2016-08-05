@@ -10,7 +10,7 @@ namespace com.adjust.sdk.purchase
     public class AdjustPurchaseiOS : IAdjustPurchase
     {
         #region Fields
-        private const string sdkPrefix = "unity0.1.1";
+        private const string sdkPrefix = "unity1.0.0";
         #endregion
 
         #region External methods
