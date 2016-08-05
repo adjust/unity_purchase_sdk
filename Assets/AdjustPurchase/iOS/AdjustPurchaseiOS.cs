@@ -18,7 +18,7 @@ namespace com.adjust.sdk.purchase
         private static extern void _AdjustPurchaseInit (string appToken, string environment, string sdkPrefix, int logLevel);
 
         [DllImport ("__Internal")]
-        private static extern void _AdjustPurchaseVerifyPurchase (string receipt, string transactionId, string sceneName);
+        private static extern void _AdjustPurchaseVerifyPurchase (string receipt, string transactionId, string productId, string sceneName);
         #endregion
 
         #region Constructors
@@ -38,9 +38,9 @@ namespace com.adjust.sdk.purchase
             _AdjustPurchaseInit (appToken, environment, sdkPrefix, logLevel);
         }
 
-        public void VerifyPurchaseiOS (string receipt, string transactionId, string sceneName)
+        public void VerifyPurchaseiOS (string receipt, string transactionId, string productId, string sceneName)
         {
-            _AdjustPurchaseVerifyPurchase (receipt, transactionId, sceneName);
+            _AdjustPurchaseVerifyPurchase (receipt, transactionId, productId, sceneName);
         }
 
         public void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback)

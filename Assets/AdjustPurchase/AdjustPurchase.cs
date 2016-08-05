@@ -74,7 +74,7 @@ namespace com.adjust.sdk.purchase
             AdjustPurchase.instance.Init (config);
         }
 
-        public static void VerifyPurchaseiOS (string receipt, string transactionId, Action<ADJPVerificationInfo> verificationInfoCallback, string sceneName = "AdjustPurchase")
+        public static void VerifyPurchaseiOS (string receipt, string transactionId, string productId, Action<ADJPVerificationInfo> verificationInfoCallback, string sceneName = "AdjustPurchase")
         {
             if (AdjustPurchase.instance == null)
             {
@@ -89,7 +89,7 @@ namespace com.adjust.sdk.purchase
             }
 
             AdjustPurchase.verificationInfoCallback = verificationInfoCallback;
-            AdjustPurchase.instance.VerifyPurchaseiOS (receipt, transactionId, sceneName);
+            AdjustPurchase.instance.VerifyPurchaseiOS (receipt, transactionId, productId, sceneName);
         }
 
         public static void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback, string sceneName = "AdjustPurchase")

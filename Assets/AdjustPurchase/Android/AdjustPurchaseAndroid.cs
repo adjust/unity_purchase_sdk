@@ -85,7 +85,7 @@ namespace com.adjust.sdk.purchase
             ajcAdjustPurchase.CallStatic ("init", ajoConfig);
         }
 
-        public void VerifyPurchaseiOS (string receipt, string transactionId, string sceneName)
+        public void VerifyPurchaseiOS (string receipt, string transactionId, string productId, string sceneName)
         {
         }
 
