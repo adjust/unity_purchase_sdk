@@ -111,6 +111,24 @@ private void VerificationInfoDelegate (ADJPVerificationInfo verificationInfo)
 }
 ```
 
+Method of the adjust purchase SDK used to make iOS verification request exects you to pass following parameters:
+
+```
+Receipt         // App receipt
+TransactionId   // Finished transaction identifier
+ProductId       // Your purchased product identifier
+Callback        // Callback method which will process the verification response
+```
+
+Method of the adjust purchase SDK used to make Android verification request exects you to pass following parameters:
+
+```
+ItemSKU           // Unique order ID (SKU)
+ItemToken         // A token that uniquely identifies a purchase
+DeveloperPayload  // A developer-specified string that contains supplemental information about an order
+Callback          // Callback method which will process the verification response
+```
+
 ### <a id="verification-response">Process verification response
 
 As described in the code above, you need to pass a method which is going to process the verification response to the 
