@@ -28,8 +28,8 @@ These are the minimal steps required to integrate the adjust SDK into your Unity
 
 Download the latest version from our [releases page][releases]. In there you will find two Unity packages:
 
-- AdjustPurchase_vX.Y.Z_Unity_4.unitypackage - Use this package if you are using Unity IDE version 4.
-- AdjustPurchase_vX.Y.Z_Unity_5.unitypackage - Use this package if you are using Unity IDE version 5.
+- **AdjustPurchase_vX.Y.Z_Unity_4.unitypackage** - Use this package if you are using **Unity IDE version 4**.
+- **AdjustPurchase_vX.Y.Z_Unity_5.unitypackage** - Use this package if you are using **Unity IDE version 5**.
 
 ### <a id="sdk-add">Add the SDK to your project
 
