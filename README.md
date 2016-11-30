@@ -248,13 +248,13 @@ to align reported transaction data with actual transaction data.
 [dashboard]:    http://adjust.com
 [adjust.com]:   http://adjust.com
 
-[releases]:             https://github.com/adjust/ios_purchase_sdk/releases
-[fraud-prevention]:     https://docs.adjust.com/en/fraud-prevention/
+[releases]:          https://github.com/adjust/unity_purchase_sdk/releases
+[fraud-prevention]:  https://docs.adjust.com/en/fraud-prevention/
 
 [editor]:           https://raw.github.com/adjust/adjust_sdk/master/Resources/unity_purchase/adjust_purchase_editor.png
 [import_package]:   https://raw.github.com/adjust/adjust_sdk/master/Resources/unity_purchase/import_package.png
 
-## <a id="livense">License
+## <a id="license">License
 
 The adjust purchase SDK is licensed under the MIT License.
 
