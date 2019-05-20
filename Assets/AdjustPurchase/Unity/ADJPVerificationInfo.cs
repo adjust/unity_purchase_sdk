@@ -12,7 +12,7 @@ namespace com.adjust.sdk.purchase
         #endregion
 
         #region Constructors
-        public ADJPVerificationInfo ()
+        public ADJPVerificationInfo()
         {
         }
 
@@ -25,10 +25,10 @@ namespace com.adjust.sdk.purchase
                 return;
             }
 
-            Message = ADJPUtils.GetJsonString (jsonNode, ADJPUtils.KeyMessage);
+            Message = ADJPUtils.GetJsonString(jsonNode, ADJPUtils.KeyMessage);
 
-            string stringStatusCode = ADJPUtils.GetJsonString (jsonNode, ADJPUtils.KeyStatusCode);
-            string stringVerificationState = ADJPUtils.GetJsonString (jsonNode, ADJPUtils.KeyVerificationState);
+            string stringStatusCode = ADJPUtils.GetJsonString(jsonNode, ADJPUtils.KeyStatusCode);
+            string stringVerificationState = ADJPUtils.GetJsonString(jsonNode, ADJPUtils.KeyVerificationState);
             
             StatusCode = Int32.Parse(stringStatusCode);
             VerificationState = ADJPUtils.StringToVerificationState(stringVerificationState);

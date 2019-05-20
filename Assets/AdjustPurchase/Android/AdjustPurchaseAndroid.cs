@@ -10,10 +10,8 @@ namespace com.adjust.sdk.purchase
     public class AdjustPurchaseAndroid : IAdjustPurchase
     {
         #region Fields
-        private const string sdkPrefix = "unity1.0.0";
-
+        private const string sdkPrefix = "unity1.0.1";
         private AndroidJavaClass ajcAdjustPurchase;
-
         private VerificationInfoListener verificationInfoListener;
         private Action<ADJPVerificationInfo> verificationInfoCallback;
         #endregion
@@ -23,76 +21,76 @@ namespace com.adjust.sdk.purchase
         {
             private Action<ADJPVerificationInfo> callback;
 
-            public VerificationInfoListener (Action<ADJPVerificationInfo> pCallback) : base ("com.adjust.sdk.purchase.OnADJPVerificationFinished")
+            public VerificationInfoListener(Action<ADJPVerificationInfo> pCallback) : base("com.adjust.sdk.purchase.OnADJPVerificationFinished")
             {
                 this.callback = pCallback;
             }
 
-            public void onVerificationFinished (AndroidJavaObject verificationInfo)
+            public void onVerificationFinished(AndroidJavaObject verificationInfo)
             {
-                ADJPVerificationInfo purchaseVerificationInfo = new ADJPVerificationInfo ();
+                ADJPVerificationInfo purchaseVerificationInfo = new ADJPVerificationInfo();
 
-                purchaseVerificationInfo.Message = verificationInfo.Get<string> (ADJPUtils.KeyMessage);
+                purchaseVerificationInfo.Message = verificationInfo.Get<string>(ADJPUtils.KeyMessage);
                 
-                AndroidJavaObject ajoStatusCode = verificationInfo.Get<AndroidJavaObject> (ADJPUtils.KeyStatusCode);
-                purchaseVerificationInfo.StatusCode = ajoStatusCode.Call<int> ("intValue");
+                AndroidJavaObject ajoStatusCode = verificationInfo.Get<AndroidJavaObject>(ADJPUtils.KeyStatusCode);
+                purchaseVerificationInfo.StatusCode = ajoStatusCode.Call<int>("intValue");
 
-                AndroidJavaObject ajoVerificationState = verificationInfo.Get<AndroidJavaObject> (ADJPUtils.KeyVerificationState);
-                string verificationStateName = ajoVerificationState.Call<string> ("name");
-                purchaseVerificationInfo.VerificationState = ADJPUtils.StringToVerificationState (verificationStateName);
+                AndroidJavaObject ajoVerificationState = verificationInfo.Get<AndroidJavaObject>(ADJPUtils.KeyVerificationState);
+                string verificationStateName = ajoVerificationState.Call<string>("name");
+                purchaseVerificationInfo.VerificationState = ADJPUtils.StringToVerificationState(verificationStateName);
 
                 if (callback != null)
                 {
-                    callback (purchaseVerificationInfo);
+                    callback(purchaseVerificationInfo);
                 }
             }
         }
         #endregion
 
         #region Constructors
-        public AdjustPurchaseAndroid ()
+        public AdjustPurchaseAndroid()
         {
-            ajcAdjustPurchase = new AndroidJavaClass ("com.adjust.sdk.purchase.AdjustPurchase");
+            ajcAdjustPurchase = new AndroidJavaClass("com.adjust.sdk.purchase.AdjustPurchase");
         }
         #endregion
 
         #region Public methods
-        public void Init (ADJPConfig config)
+        public void Init(ADJPConfig config)
         {
             // Get environment variable.
             AndroidJavaObject ajoEnvironment = config.environment == ADJPEnvironment.Sandbox ? 
-                new AndroidJavaClass ("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject> ("ENVIRONMENT_SANDBOX") :
-                    new AndroidJavaClass ("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject> ("ENVIRONMENT_PRODUCTION");
+                new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_SANDBOX") :
+                    new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_PRODUCTION");
 
             // Create adjust config object.
-            AndroidJavaObject ajoConfig = new AndroidJavaObject ("com.adjust.sdk.purchase.ADJPConfig", config.appToken, ajoEnvironment);
+            AndroidJavaObject ajoConfig = new AndroidJavaObject("com.adjust.sdk.purchase.ADJPConfig", config.appToken, ajoEnvironment);
 
             // Check log level.
             if (config.logLevel.HasValue)
             {
-                AndroidJavaObject ajoLogLevel = new AndroidJavaClass ("com.adjust.sdk.purchase.ADJPLogLevel").GetStatic<AndroidJavaObject> (config.logLevel.Value.UppercaseToString ());
+                AndroidJavaObject ajoLogLevel = new AndroidJavaClass("com.adjust.sdk.purchase.ADJPLogLevel").GetStatic<AndroidJavaObject>(config.logLevel.Value.UppercaseToString());
 
                 if (ajoLogLevel != null)
                 {
-                    ajoConfig.Call ("setLogLevel", ajoLogLevel);
+                    ajoConfig.Call("setLogLevel", ajoLogLevel);
                 }
             }
 
             // Set unity SDK prefix.
-            ajoConfig.Call ("setSdkPrefix", sdkPrefix);
+            ajoConfig.Call("setSdkPrefix", sdkPrefix);
 
             // Initialise and start the SDK.
-            ajcAdjustPurchase.CallStatic ("init", ajoConfig);
+            ajcAdjustPurchase.CallStatic("init", ajoConfig);
         }
 
-        public void VerifyPurchaseiOS (string receipt, string transactionId, string productId, string sceneName)
+        public void VerifyPurchaseiOS(string receipt, string transactionId, string productId, string sceneName)
         {
         }
 
-        public void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback)
+        public void VerifyPurchaseAndroid(string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback)
         {
-            verificationInfoListener = new VerificationInfoListener (verificationInfoCallback);
-            ajcAdjustPurchase.CallStatic ("verifyPurchase", itemSku, itemToken, developerPayload, verificationInfoListener);
+            verificationInfoListener = new VerificationInfoListener(verificationInfoCallback);
+            ajcAdjustPurchase.CallStatic("verifyPurchase", itemSku, itemToken, developerPayload, verificationInfoListener);
         }
         #endregion
     }

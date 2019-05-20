@@ -41,13 +41,11 @@ extern "C"
         if (logLevel != -1) {
             [config setLogLevel:(ADJPLogLevel)logLevel];
         }
-
         if (stringSdkPrefix != nil && [stringSdkPrefix length] > 0) {
             [config setSdkPrefix:stringSdkPrefix];
         }
 
         adjustPurchaseUnityInstance = [[AdjustPurchaseUnity alloc] init];
-
         [AdjustPurchase init:config];
     }
 
@@ -60,15 +58,12 @@ extern "C"
         if (sceneName != NULL && [stringSceneName length] > 0) {
             adjustPurchaseSceneName = strdup(sceneName);
         }
-
         if (receipt != NULL) {
             stringReceipt = [NSString stringWithUTF8String:receipt];
         }
-
         if (transactionId != NULL) {
             stringTransactionId = [NSString stringWithUTF8String:transactionId];
         }
-
         if (productId != NULL) {
             stringProducId = [NSString stringWithUTF8String:productId];
         }

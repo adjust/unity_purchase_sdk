@@ -12,7 +12,7 @@
 
     public static class ADJPLogLevelExtension
     {
-        public static string LowercaseToString (this ADJPLogLevel adjustPurchaseLogLevel)
+        public static string LowercaseToString(this ADJPLogLevel adjustPurchaseLogLevel)
         {
             switch (adjustPurchaseLogLevel)
             {
@@ -33,7 +33,7 @@
             }
         }
 
-        public static string UppercaseToString (this ADJPLogLevel adjustPurchaseLogLevel)
+        public static string UppercaseToString(this ADJPLogLevel adjustPurchaseLogLevel)
         {
             switch (adjustPurchaseLogLevel)
             {

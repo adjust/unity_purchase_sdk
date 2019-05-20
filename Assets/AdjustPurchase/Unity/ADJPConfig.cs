@@ -6,15 +6,13 @@ namespace com.adjust.sdk.purchase
     {
         #region Fields
         internal string appToken;
-
         internal ADJPLogLevel? logLevel;
         internal ADJPEnvironment environment;
-
         internal Action<ADJPVerificationInfo> attributionChangedDelegate;
         #endregion
 
         #region Constructors
-        public ADJPConfig (string appToken, ADJPEnvironment environment)
+        public ADJPConfig(string appToken, ADJPEnvironment environment)
         {
             this.appToken = appToken;
             this.environment = environment;
@@ -22,7 +20,7 @@ namespace com.adjust.sdk.purchase
         #endregion
 
         #region Public methods
-        public void SetLogLevel (ADJPLogLevel logLevel)
+        public void SetLogLevel(ADJPLogLevel logLevel)
         {
             this.logLevel = logLevel;
         }

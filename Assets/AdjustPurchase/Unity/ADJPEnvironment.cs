@@ -8,7 +8,7 @@
 
     public static class ADJPEnvironmentExtension
     {
-        public static string LowercaseToString (this ADJPEnvironment adjustPurchaseEnvironment)
+        public static string LowercaseToString(this ADJPEnvironment adjustPurchaseEnvironment)
         {
             switch (adjustPurchaseEnvironment)
             {
