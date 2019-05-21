@@ -10,40 +10,40 @@ namespace com.adjust.sdk.purchase
     public class AdjustPurchaseiOS : IAdjustPurchase
     {
         #region Fields
-        private const string sdkPrefix = "unity1.0.0";
+        private const string sdkPrefix = "unity1.0.1";
         #endregion
 
         #region External methods
-        [DllImport ("__Internal")]
-        private static extern void _AdjustPurchaseInit (string appToken, string environment, string sdkPrefix, int logLevel);
+        [DllImport("__Internal")]
+        private static extern void _AdjustPurchaseInit(string appToken, string environment, string sdkPrefix, int logLevel);
 
-        [DllImport ("__Internal")]
-        private static extern void _AdjustPurchaseVerifyPurchase (string receipt, string transactionId, string productId, string sceneName);
+        [DllImport("__Internal")]
+        private static extern void _AdjustPurchaseVerifyPurchase(string receipt, string transactionId, string productId, string sceneName);
         #endregion
 
         #region Constructors
-        public AdjustPurchaseiOS ()
+        public AdjustPurchaseiOS()
         {
         }
         #endregion
 
         #region Public methods
-        public void Init (ADJPConfig config)
+        public void Init(ADJPConfig config)
         {
             string appToken = config.appToken;
-            string environment = config.environment.LowercaseToString ();
+            string environment = config.environment.LowercaseToString();
 
-            int logLevel = ADJPUtils.ConvertLogLevel (config.logLevel);
+            int logLevel = ADJPUtils.ConvertLogLevel(config.logLevel);
 
-            _AdjustPurchaseInit (appToken, environment, sdkPrefix, logLevel);
+            _AdjustPurchaseInit(appToken, environment, sdkPrefix, logLevel);
         }
 
-        public void VerifyPurchaseiOS (string receipt, string transactionId, string productId, string sceneName)
+        public void VerifyPurchaseiOS(string receipt, string transactionId, string productId, string sceneName)
         {
-            _AdjustPurchaseVerifyPurchase (receipt, transactionId, productId, sceneName);
+            _AdjustPurchaseVerifyPurchase(receipt, transactionId, productId, sceneName);
         }
 
-        public void VerifyPurchaseAndroid (string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback)
+        public void VerifyPurchaseAndroid(string itemSku, string itemToken, string developerPayload, Action<ADJPVerificationInfo> verificationInfoCallback)
         {
         }
         #endregion

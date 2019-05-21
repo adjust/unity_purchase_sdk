@@ -14,7 +14,7 @@ namespace com.adjust.sdk.purchase
         #endregion
 
         #region Public methods
-        public static int ConvertLogLevel (ADJPLogLevel? logLevel)
+        public static int ConvertLogLevel(ADJPLogLevel? logLevel)
         {
             if (logLevel == null)
             {
@@ -24,9 +24,9 @@ namespace com.adjust.sdk.purchase
             return (int)logLevel;
         }
 
-        public static String GetJsonString (JSONNode node, string key)
+        public static String GetJsonString(JSONNode node, string key)
         {
-            var jsonValue = GetJsonValue (node, key);
+            var jsonValue = GetJsonValue(node, key);
 
             if (jsonValue == null)
             {
@@ -36,16 +36,16 @@ namespace com.adjust.sdk.purchase
             return jsonValue.Value;
         }
 
-        public static JSONNode GetJsonValue (JSONNode node, string key)
+        public static JSONNode GetJsonValue(JSONNode node, string key)
         {
             if (node == null)
             {
                 return null;
             }
 
-            var nodeValue = node [key];
+            var nodeValue = node[key];
 
-            if (nodeValue.GetType () == typeof (JSONLazyCreator))
+            if (nodeValue.GetType() == typeof(JSONLazyCreator))
             {
                 return null;
             }
@@ -53,7 +53,7 @@ namespace com.adjust.sdk.purchase
             return nodeValue;
         }
 
-        public static ADJPVerificationState? StringToVerificationState (string verificationStateString)
+        public static ADJPVerificationState? StringToVerificationState(string verificationStateString)
         {
             if (verificationStateString.Equals("ADJPVerificationStatePassed"))
             {

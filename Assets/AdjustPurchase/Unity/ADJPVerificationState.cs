@@ -10,7 +10,7 @@
 
     public static class ADJPVerificationStateExtension
     {
-        public static string VerificationStateToString (this ADJPVerificationState verificationState)
+        public static string VerificationStateToString(this ADJPVerificationState verificationState)
         {
             switch (verificationState)
             {
