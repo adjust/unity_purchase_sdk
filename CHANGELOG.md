@@ -1,3 +1,12 @@
+### Version 1.0.1 (21st May 2019)
+#### Fixed
+- Fixed Android build error caused by some iOS files belonging to all platforms instead of just iOS/tvOS.
+
+#### Changed
+- Removed support for Unity 4 and lower versions.
+
+---
+
 ### Version 1.0.0 (5th August 2016)
 #### Added
 - Added product ID to the iOS verification request.
