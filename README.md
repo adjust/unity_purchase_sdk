@@ -18,8 +18,6 @@ This is the Unity purchase SDK of Adjust™. It supports iOS and Android targets
 
 ## <a id="basic-integration">Basic integration
 
-In order to use the Adjust purchase SDK, you must **first enable fraud prevention** for your app. You can find the instructions in our official [fraud prevention guide][fraud-prevention] documentation.
-
 These are the minimal steps required to integrate the adjust SDK into your Unity project.
 
 ### <a id="sdk-get">Get the SDK
