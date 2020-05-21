@@ -63,7 +63,7 @@ namespace com.adjust.sdk.purchase
             //         new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_PRODUCTION");
 
             // Get environment variable.
-            string ajoEnvironment = adjustConfig.environment == AdjustEnvironment.Production ? "production" : "sandbox";
+            string ajoEnvironment = config.environment == ADJPEnvironment.Production ? "production" : "sandbox";
 
             // Create adjust config object.
             AndroidJavaObject ajoConfig = new AndroidJavaObject("com.adjust.sdk.purchase.ADJPConfig", config.appToken, ajoEnvironment);
