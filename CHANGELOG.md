@@ -1,3 +1,9 @@
+### Version 1.0.3 (21st May 2020)
+#### Fixed
+- Fixed typos which caused build errors for Android platform.
+
+---
+
 ### Version 1.0.2 (21st May 2020)
 #### Fixed
 - Fixed Unity 2019.2.0 and later problem with accessing native Android constant values via JNI which caused SDK to report invalid environment.

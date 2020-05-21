@@ -10,7 +10,7 @@ namespace com.adjust.sdk.purchase
     public class AdjustPurchaseAndroid : IAdjustPurchase
     {
         #region Fields
-        private const string sdkPrefix = "unity1.0.2";
+        private const string sdkPrefix = "unity1.0.3";
         private AndroidJavaClass ajcAdjustPurchase;
         private VerificationInfoListener verificationInfoListener;
         private Action<ADJPVerificationInfo> verificationInfoCallback;
@@ -63,7 +63,7 @@ namespace com.adjust.sdk.purchase
             //         new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_PRODUCTION");
 
             // Get environment variable.
-            string ajoEnvironment = adjustConfig.environment == AdjustEnvironment.Production ? "production" : "sandbox";
+            string ajoEnvironment = config.environment == ADJPEnvironment.Production ? "production" : "sandbox";
 
             // Create adjust config object.
             AndroidJavaObject ajoConfig = new AndroidJavaObject("com.adjust.sdk.purchase.ADJPConfig", config.appToken, ajoEnvironment);
