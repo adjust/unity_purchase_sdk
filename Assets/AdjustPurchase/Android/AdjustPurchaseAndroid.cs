@@ -57,10 +57,13 @@ namespace com.adjust.sdk.purchase
         #region Public methods
         public void Init(ADJPConfig config)
         {
+            // Thank you, Unity 2019.2.0, for breaking this.
+            // AndroidJavaObject ajoEnvironment = config.environment == ADJPEnvironment.Sandbox ? 
+            //     new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_SANDBOX") :
+            //         new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_PRODUCTION");
+
             // Get environment variable.
-            AndroidJavaObject ajoEnvironment = config.environment == ADJPEnvironment.Sandbox ? 
-                new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_SANDBOX") :
-                    new AndroidJavaClass("com.adjust.sdk.purchase.ADJPConstants").GetStatic<AndroidJavaObject>("ENVIRONMENT_PRODUCTION");
+            string ajoEnvironment = adjustConfig.environment == AdjustEnvironment.Production ? "production" : "sandbox";
 
             // Create adjust config object.
             AndroidJavaObject ajoConfig = new AndroidJavaObject("com.adjust.sdk.purchase.ADJPConfig", config.appToken, ajoEnvironment);
