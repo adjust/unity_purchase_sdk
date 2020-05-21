@@ -10,7 +10,7 @@ namespace com.adjust.sdk.purchase
     public class AdjustPurchaseAndroid : IAdjustPurchase
     {
         #region Fields
-        private const string sdkPrefix = "unity1.0.2";
+        private const string sdkPrefix = "unity1.0.3";
         private AndroidJavaClass ajcAdjustPurchase;
         private VerificationInfoListener verificationInfoListener;
         private Action<ADJPVerificationInfo> verificationInfoCallback;
