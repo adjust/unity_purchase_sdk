@@ -1,3 +1,9 @@
+### Version 1.0.2 (21st May 2020)
+#### Fixed
+- Fixed Unity 2019.2.0 and later problem with accessing native Android constant values via JNI which caused SDK to report invalid environment.
+
+---
+
 ### Version 1.0.1 (21st May 2019)
 #### Fixed
 - Fixed Android build error caused by some iOS files belonging to all platforms instead of just iOS/tvOS.
